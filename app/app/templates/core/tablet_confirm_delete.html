@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form method="post" style="text-align: center">
+    {% csrf_token %}
+    Vous voulez confirmer la suppression de la tablette "{{ object }}" ?
+    <input type="submit" value="Confirmer" class="btn btn-danger">
+</form>
+</div>
+{% endblock %}

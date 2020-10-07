@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+
+  <div class="row">
+
+
+    <div class="col-md-4">
+      <h3 class="my-3">Description de la tablette</h3>
+      <p>Nom : {{object.name}}.</p>
+      <p>Date de sortie : {{object.release_year}}.</p>
+
+      <h3 class="my-3">Description de la marque</h3>
+      <p>Nom : {{object.brand.name}}.</p>
+      <p>Fondateur : {{object.brand.founder}}</p>
+      <p>Pays : {{object.brand.country.name}}</p>
+    </div>
+
+  </div>
+{% endblock%}

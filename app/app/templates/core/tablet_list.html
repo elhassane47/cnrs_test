@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block body %}
+<h3>les tablettes fabriquées en france entre 2015 et 2020</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Marque</th>
+      <th scope="col">Stockage</th>
+      <th scope="col">Date de sortie</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for object in french %}
+    <tr>
+      <td><a href="{% url 'tablets-detail' pk=object.pk %}">{{ object.name }}</a></td>
+      <td>{{ object.brand }}</td>
+      <td>{{ object.storage_size }}</td>
+      <td>{{ object.release_year }}</td>
+      <td>
+        <a class="btn btn-success" href="{% url 'tablets-update' pk=object.pk %}">Modifier</a>
+        <a class="btn btn-danger" href="{% url 'tablets-delete' pk=object.pk %}">Supprimer</a>
+
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td>le tableau est vide .</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3>les tablettes fabriquées ailleurs</h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Marque</th>
+      <th scope="col">Stockage</th>
+      <th scope="col">Date de sortie</th>
+      <th scope="col">Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for object in object_list %}
+    <tr>
+      <td><a href="{% url 'tablets-detail' pk=object.pk %}">{{ object.name }}</a></td>
+      <td>{{ object.brand }}</td>
+      <td>{{ object.storage_size }}</td>
+      <td>{{ object.release_year }}</td>
+      <td>
+        <a class="btn btn-success" href="{% url 'tablets-update' pk=object.pk %}">Modifier</a>
+        <a class="btn btn-danger" href="{% url 'tablets-delete' pk=object.pk %}">Supprimer</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td>le tableau est vide .</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock%}
